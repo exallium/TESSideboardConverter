@@ -15,15 +15,6 @@ flattenCardInfo (x:y:xs) = (x ++ y) : flattenCardInfo xs
 groupCardInfo :: [String] -> [[String]]
 groupCardInfo (x:xs) = (x : takeWhile ((== '\n') . head) xs) : groupCardInfo (dropWhile ((== '\n') . head) xs)
 
-trimNewlineHead :: String -> String
-trimNewlineHead s = if head s == '\n' then tail s else s
-
-trimNewlineTail :: String -> String
-trimNewlineTail s = if last s == '\n' then init s else s
-
-trimNewline :: String -> String
-trimNewline = trimNewlineHead . trimNewlineTail
-
 formatCards :: [String] -> String
 formatCards = filter ('\n' /=) . intercalate ", "
 
