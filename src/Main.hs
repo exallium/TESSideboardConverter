@@ -13,7 +13,9 @@ flattenCardInfo [] = []
 flattenCardInfo (x:y:xs) = (x ++ y) : flattenCardInfo xs
 
 groupCardInfo :: [String] -> [[String]]
-groupCardInfo (x:xs) = (x : takeWhile ((== '\n') . head) xs) : groupCardInfo (dropWhile ((== '\n') . head) xs)
+groupCardInfo [] = []
+groupCardInfo (x:xs) = (x : ys) : groupCardInfo zs
+  where (ys, zs) = span ((== '\n') . head) xs
 
 formatCards :: [String] -> String
 formatCards = filter ('\n' /=) . intercalate ", "
