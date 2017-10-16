@@ -4,7 +4,7 @@
 
 https://www.dropbox.com/s/3yihr4rf2e0dar4/sideboard.html?dl=0
 
-## To Use:
+## To run yourself:
 
 1. Install the stack toolset to build and install the application (platform dependant):
 
