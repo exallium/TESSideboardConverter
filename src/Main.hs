@@ -5,6 +5,8 @@ import Text.HandsomeSoup
 import Data.Semigroup ((<>))
 import Data.List
 
+import CardNameCompressor (cnReplaceNames)
+
 tesSideboardGuide :: String
 tesSideboardGuide = "http://theepicstorm.com/sideboarding-guide/"
 
@@ -58,4 +60,4 @@ main = do
   let entries = zip decks cards'
   let entries' = map formatEntry entries
 
-  writeFile "sideboard.html" $ intercalate "\n" entries'
+  writeFile "sideboard.html" $ cnReplaceNames (intercalate "\n" entries')

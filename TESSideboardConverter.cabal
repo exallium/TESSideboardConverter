@@ -20,3 +20,5 @@ executable TESSideboardConverter
   build-depends:       base >= 4.7 && < 5
                      , hxt >= 9.3.1.16 && < 9.4
                      , HandsomeSoup >= 0.4.2 && < 0.5
+                     , regex-compat >= 0.95.1 && < 1.0
+  other-modules:       CardNameCompressor
