@@ -20,6 +20,7 @@ cnMap = [ ("Chrome Mox", "Mox")
         , ("Past in Flames", "PiF")
         , ("Grapeshot", "Grape")
         , ("Pulverise", "Pulv")
+        , ("Chain of Vapor", "CoV")
         ]
 
 cnRegex :: [(Regex, String)]
