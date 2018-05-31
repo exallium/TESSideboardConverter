@@ -21,4 +21,6 @@ executable TESSideboardConverter
                      , hxt >= 9.3.1.16 && < 9.4
                      , HandsomeSoup >= 0.4.2 && < 0.5
                      , regex-compat >= 0.95.1 && < 1.0
+                     , http-conduit >= 2.2.3.2 && < 2.4
+                     , bytestring >= 0.10.8.1 && < 0.11
   other-modules:       CardNameCompressor

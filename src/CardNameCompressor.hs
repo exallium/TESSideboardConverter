@@ -19,6 +19,7 @@ cnMap = [ ("Chrome Mox", "Mox")
         , ("Echoing Truth", "Truth")
         , ("Past in Flames", "PiF")
         , ("Grapeshot", "Grape")
+        , ("Pulverise", "Pulv")
         ]
 
 cnRegex :: [(Regex, String)]

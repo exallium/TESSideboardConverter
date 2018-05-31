@@ -1,14 +1,21 @@
 module Main where
 
+import Network.HTTP.Conduit
+
 import Text.XML.HXT.Core
 import Text.HandsomeSoup
 import Data.Semigroup ((<>))
 import Data.List
+import Data.ByteString.Lazy (ByteString)
+import Data.ByteString.Lazy.Char8 (unpack)
 
 import CardNameCompressor (cnReplaceNames)
 
 tesSideboardGuide :: String
-tesSideboardGuide = "http://theepicstorm.com/sideboarding-guide/"
+tesSideboardGuide = "https://theepicstorm.com/sideboard-guide/"
+
+readHttps :: IO ByteString
+readHttps = simpleHttp tesSideboardGuide
 
 data WordType s = Count s | Cardname s | None s deriving Show
 
@@ -53,7 +60,8 @@ formatEntry (d,c) = "<p><strong>" <> d <> "</strong> " <> formatCards c <> "</p>
 
 main :: IO ()
 main = do
-  let doc = fromUrl tesSideboardGuide
+  byteString <- readHttps
+  let doc = readString [withParseHTML yes, withWarnings no] (unpack byteString)
   decks <- runX $ doc >>> css ".clearfix .col-md-4 h5, .clearfix .col-md-3 h5" //> getText
   cards <- runX $ doc >>> css ".clearfix .col-md-4 p, .clearfix .col-md-3 p" //> getText
   let cards' = groupCardInfo . buildBoardInfo $ cards
